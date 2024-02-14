@@ -2,6 +2,8 @@ package com.matzip.user.entity;
 
 import java.time.ZonedDateTime;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +34,7 @@ public class UserEntity {
 	private String yyyymmdd;
 	
 	@Column(name = "loginId")
-	private int loginId;
+	private String loginId;
 	
 	private String password;
 	
@@ -45,9 +47,11 @@ public class UserEntity {
 	
 	private String address;
 	
+	@UpdateTimestamp
 	@Column(name = "createdAt", updatable = false)
 	private ZonedDateTime createdAt;
 	
+	@UpdateTimestamp
 	@Column(name = "updatedAt")
 	private ZonedDateTime updatedAt;
 	

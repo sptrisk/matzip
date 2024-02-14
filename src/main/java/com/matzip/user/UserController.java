@@ -13,13 +13,15 @@ public class UserController {
 	// 로그인 페이지
 	@GetMapping("/sign-in-view")
 	public String signInView(Model model) {
-		return 
+		model.addAttribute("viewPage", "user/signIn");
+		return "template/layout";
 	}
 	
 	// 회원가입 페이지
 	@GetMapping("/sign-up-view")
-	public String signUpView() {
-		return
+	public String signUpView(Model model) {
+		model.addAttribute("viewPage", "user/signUp");
+		return "template/layout";
 	}
 	
 	

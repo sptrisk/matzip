@@ -6,5 +6,5 @@ import com.matzip.user.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Integer>{
 
-	
+	public UserEntity getUserEntityByLoginId(String loginId);
 }

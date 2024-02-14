@@ -21,7 +21,7 @@
 			<jsp:include page="../include/header.jsp" />
 		</header>
 		<section>
-		
+			<jsp:include page="../${viewPage}.jsp" />
 		</section>
 	</div>
 </body>
