@@ -72,7 +72,52 @@ $(document).ready(function(){
 	$("#signUpBtn").on('click', function() {
 		
 		// validation
-		let loginId = $('#loginId').val().trim;
+		let loginId = $('#loginId').val().trim();
+		let password = $('#password').val().trim();
+		let name = $('#name').val().trim();
+		let email = $("#email").val().trim();
+		let yyyymmdd = $("#yyyymmdd").val().trim();
+		let nickname = $("#nickname").val().trim();
+		let imagePath = $("#imagePath").val().trim();
+		let address = $("#address").val().trim;
+		
+		
+		if (!loginId) {
+			alert ("아이디를 입력하세요.");
+			return false;
+		}
+		
+		if (!password || !confirmPassword) {
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		
+		if (password != confirmPassword) {
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+		
+		if (!name) {
+			alert("이름을 입력하세요.");
+			return false;
+		}
+		
+		if (!email) {
+			alert("이메일을 입력하세요.");
+			return false;
+		}
+		
+		if (!yyyymmdd) {
+			alert("생년월일을 입력하세요.");
+			return false;
+		}
+		
+		if (!nickname) {
+			alert("닉네임을 입력하세요.");
+			return false;
+		}
+		
+		
 		
 		
 		

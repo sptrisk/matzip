@@ -14,6 +14,44 @@ public class UserBO {
 	
 	
 	public UserEntity getUserEntityByLoginId(String loginId) {
-		return userRepository.findByloginId(loginId);
+		return userRepository.findByLoginId(loginId);
 	}
+	
+	public Integer addUser(
+			String loginId, 
+			String password, 
+			String name,
+			String email,
+			String yyyymmdd,
+			String nickname,
+			String imagePath, // filemanager 추가하기
+			String address) {
+		
+		UserEntity userEntity = userRepository.save(
+								UserEntity.builder()
+								.loginId(loginId)
+								.password(password)
+								.name(name)
+								.email(email)
+								.yyyymmdd(yyyymmdd)
+								.nickname(nickname)
+								.imagePath(imagePath)
+								.address(address)
+								.build()
+				);
+		
+		
+		return userEntity == null ? null : userEntity.getId();
+
+	}
+	
+	public UserEntity getUserEntityByLoginIdAndPassword(String loginId, String password) {
+		return userRepository.findByLoginIdAndPassword(loginId, password);
+	}
+	
+	
+	
+	
+	
+	
 }
