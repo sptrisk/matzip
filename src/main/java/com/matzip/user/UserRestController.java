@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,29 @@ import jakarta.servlet.http.HttpSession;
 public class UserRestController {
 	
 	@Autowired UserBO userBO;
+	
+	/**
+	 * 아이디 중복확인 API
+	 * @param loginId
+	 * @return
+	 */
+	@RequestMapping("/is-duplicated-id")
+	public Map<String, Object> isDuplicatedId(
+			@RequestParam("loginId") String loginId) {
+		
+		// DB 조회 - select
+		UserEntity user = userBO.getUserEntityByLoginId(loginId);
+		
+		Map<String, Object> result = new HashMap<>();
+		if (user != null) { // 중복
+			result.put("code", 200);
+			result.put("is_duplicated_id", true);
+		} else { // 중복 아님
+			result.put("code", 200);
+			result.put("is_duplicated_id", false);
+		}
+		return result;
+	}
 	
 	
 	@PostMapping("sign-up")

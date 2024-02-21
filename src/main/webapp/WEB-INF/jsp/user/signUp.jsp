@@ -11,7 +11,7 @@
 				<button type="button" id="loginIdCheckBtn" class="ml-3 btn btn-success">중복확인</button>
 			</div>
 			
-			<%-- 아이디 체크 결과 --%>
+			<%-- 아이디 확인 --%>
 			<div class="ml-3 mb-3">
 				<div id="idCheckLength" class="small text-danger d-none">ID를 4자 이상 입력해주세요.</div>
 				<div id="idCheckDuplicated" class="small text-danger d-none">이미 사용중인 ID입니다.</div>
@@ -68,8 +68,44 @@
 <script>
 $(document).ready(function(){
 	
+	
+	// 아이디 중복확인
+	$("#loginIdCheckBtn").on('click', function() {
+		//alert("중복확인");
+		
+		// 경고 문구 초기화
+		$("#idCheckLength").addClass("d-none");
+		$("#idCheckDuplicated").addClass("d-none");
+		$("#idCheckOk").addClass("d-none");
+		
+		let loginId = $("#loginId").val().trim();
+		if (loginId.length < 4) {
+			$("#idCheckLength").removeClass("d-none");
+			return;
+		}
+		
+		$.get("/user/is-duplicated-id", {"loginId":loginId}) // request
+		.done(function(data) { // response
+			if (data.code == 200) {
+				if (data.is_duplicated_id) { // 중복
+					$("#idCheckDuplicated").removeClass("d-none");
+				} else { // 사용 가능
+					$("#idCheckOk").removeClass("d-none");
+				}
+			} else {
+				alert(data.error_message);
+			}
+		});
+		
+	});
+	
+	
+	
+	
+	
 	// 가입하기 버튼 클릭
-	$("#signUpBtn").on('click', function() {
+	$("#signUpForm").on('click', function(e) {
+		//alert("회원가입");
 		
 		// validation
 		let loginId = $('#loginId').val().trim();
@@ -117,28 +153,31 @@ $(document).ready(function(){
 			return false;
 		}
 		
+		if ($("#idCheckOk").hasClass('d-none')) {
+			alert("아이디 중복확인을 다시 해주세요.");
+			return false;
+		}
 		
 		
 		
+		let url = $(this).attr("action");
+		let params = $(this).serialize();
+		console.log(params)
 		
-		
-		
-		
-		
+		$.post(url, params) // request
+		.done(function(data) {
+			if (data.code == 200) {
+				alert("가입을 환영합니다. 로그인 해주세요.");
+				location.href = "/user/sign-in-view"; // 로그인 화면으로 이동
+				
+				
+			} else {
+				// 로직 실패
+				alert(data.error_message);
+			}
+		});
 		
 	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }); // ready함수 끝
 </script>
