@@ -12,7 +12,7 @@ public class MainController {
 	@GetMapping("/main-view")
 	public String mainPage(Model model) {
 		model.addAttribute("viewPage", "main/mainPage");
-		return "template/layout";
+		return "main/mainPage";
 		
 	}
 	
