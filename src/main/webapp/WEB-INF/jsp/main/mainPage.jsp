@@ -18,11 +18,11 @@
 <body>
 	<div id="wrap">
 		<div class="d-flex">
-			<div class="userInfo bg-warning">
+			<div class="userInfo bg-warning justify-content-center">
 				<h1>유저 정보</h1>
 			
 			</div>
-			<div>
+			<div class= "justify-content-center">
 				<div class="banner bg-secondary">
 				<h1>배너</h1>
 				</div>

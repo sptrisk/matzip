@@ -20,42 +20,42 @@
 			
 			<span class="sign-up-subject">비밀번호</span>
 			<div class="m-3">
-				<input type="password" name="password" class="form-control col-6" placeholder="비밀번호를 입력하세요">
+				<input type="password" id="password" name="password" class="form-control col-6" placeholder="비밀번호를 입력하세요">
 			</div>
 
 			<span class="sign-up-subject">비밀번호 확인</span>
 			<div class="m-3">
-				<input type="password" name="confirmPassword" class="form-control col-6" placeholder="비밀번호를 입력하세요">
+				<input type="password" id="confirmPassword" name="confirmPassword" class="form-control col-6" placeholder="비밀번호를 입력하세요">
 			</div>
 
 			<span class="sign-up-subject">이름</span>
 			<div class="m-3">
-				<input type="text" name="name" class="form-control col-6" placeholder="">
+				<input type="text" id="name" name="name" class="form-control col-6" placeholder="">
 			</div>
 
 			<span class="sign-up-subject">이메일</span>
 			<div class="m-3">
-				<input type="text" name="email" class="form-control col-6" placeholder="">
+				<input type="text" id="email" name="email" class="form-control col-6" placeholder="">
 			</div>
 			
 			<span class="sign-up-subject">생년월일</span>
 			<div class="m-3">
-				<input type="text" name="yyyymmdd" class="form-control col-6" placeholder="">
+				<input type="text" id="yyyymmdd" name="yyyymmdd" class="form-control col-6" placeholder="">
 			</div>
 			
 			<span class="sign-up-subject">닉네임</span>
 			<div class="m-3">
-				<input type="text" name="nickname" class="form-control col-6" placeholder="">
+				<input type="text" id="nickname" name="nickname" class="form-control col-6" placeholder="">
 			</div>
 			
 			<span class="sign-up-subject">프로필 사진</span>
 			<div class="m-3">
-				<input type="text" name="imagePath" class="form-control col-6" placeholder="나중에 입력 가능">
+				<input type="text" id="imagePath" name="imagePath" class="form-control col-6" placeholder="나중에 입력 가능">
 			</div>
 			
 			<span class="sign-up-subject">주소</span>
 			<div class="m-3">
-				<input type="text" name="address" class="form-control col-6" placeholder="나중에 입력 가능">
+				<input type="text" id="address" name="address" class="form-control col-6" placeholder="나중에 입력 가능">
 			</div>
 			
 			<br>
@@ -66,7 +66,7 @@
 	</div>
 </div>
 <script>
-$(document).ready(function(){
+$(document).ready(function() {
 	
 	
 	// 아이디 중복확인
@@ -105,17 +105,19 @@ $(document).ready(function(){
 	
 	// 가입하기 버튼 클릭
 	$("#signUpForm").on('click', function(e) {
+		//e.preventDefault();
 		//alert("회원가입");
 		
 		// validation
 		let loginId = $('#loginId').val().trim();
-		let password = $('#password').val().trim();
+		let password = $('#password').val();
+		let confrimPassword = $("#confirmPassword").val();
 		let name = $('#name').val().trim();
 		let email = $("#email").val().trim();
 		let yyyymmdd = $("#yyyymmdd").val().trim();
 		let nickname = $("#nickname").val().trim();
 		let imagePath = $("#imagePath").val().trim();
-		let address = $("#address").val().trim;
+		let address = $("#address").val().trim();
 		
 		
 		if (!loginId) {
@@ -128,7 +130,7 @@ $(document).ready(function(){
 			return false;
 		}
 		
-		if (password != confirmPassword) {
+		if (password.equals(confirmPassword)) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return false;
 		}

@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-#wrap {height:1200px; background-color:#ededed;}
-.userInfo {height:200px; width:200px}
-.banner{height:150px; width:700px;}
+#wrap {height:1200px; background-color:#ededed}
+.userInfo {height:300px; width:250px;}
+.banner{height:250px; width:700px;}
 .searchBar{height:50px;}
 
-.category {height:700px; width:200px}
-.storeInfo{height:700px; width:700px}
+.category {height:650px; width:250px}
+.storeInfo{height:650px; width:700px}

@@ -15,6 +15,7 @@ import com.matzip.user.entity.UserEntity;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+@RequestMapping("/user")
 @RestController
 public class UserRestController {
 	
@@ -44,7 +45,7 @@ public class UserRestController {
 	}
 	
 	
-	@PostMapping("sign-up")
+	@PostMapping("/sign-up")
 	public Map<String, Object> signUp(
 			@RequestParam("loginId") String loginId,
 			@RequestParam("password") String password,
