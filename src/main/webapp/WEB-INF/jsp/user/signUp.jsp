@@ -121,7 +121,7 @@ $(document).ready(function() {
 		
 		
 		if (!loginId) {
-			alert ("아이디를 입력하세요.");
+			alert("아이디를 입력하세요.");
 			return false;
 		}
 		
