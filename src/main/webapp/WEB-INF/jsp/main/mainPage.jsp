@@ -19,8 +19,7 @@
 	<div id="wrap">
 		<div class="d-flex">
 			<div class="userInfo bg-warning justify-content-center">
-				<h1>유저 정보</h1>
-			
+			<jsp:include page="mainUserPage.jsp" />
 			</div>
 			<div class= "justify-content-center">
 				<div class="banner bg-secondary">
@@ -34,9 +33,11 @@
 		<div class="d-flex">
 			<div class="category bg-info">
 				<h1>카테고리</h1>
+				<jsp:include page="mainCategory.jsp" />
 			</div>
 			<div class="storeInfo bg-warning">
 				<h1>가게 정보</h1>
+				<jsp:include page="mainStorePage.jsp" />
 			</div>
 		</div>
 	</div>
